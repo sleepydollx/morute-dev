@@ -55,8 +55,6 @@ public class EnemyAI : MonoBehaviour
         DrainPlayerSanityByProximity();
     }
 
-    // ── State Handlers ─────────────────────────────────────────────────
-
     void HandlePatrol()
     {
         agent.speed = patrolSpeed;
@@ -99,7 +97,6 @@ public class EnemyAI : MonoBehaviour
         agent.speed = searchSpeed;
         stateTimer += Time.deltaTime;
 
-        // Wander near last known position
         if (agent.remainingDistance < 0.5f)
         {
             Vector3 randomOffset = Random.insideUnitSphere * 5f;
@@ -125,7 +122,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // ── Detection ──────────────────────────────────────────────────────
 
     void CheckForPlayer()
     {
@@ -133,14 +129,12 @@ public class EnemyAI : MonoBehaviour
 
         float distToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Sight check
         if (distToPlayer <= sightRange && CanSeePlayer())
         {
             ChangeState(EnemyState.Chasing);
             return;
         }
 
-        // Hearing check (player running drains hearing range)
         PlayerController pc = player.GetComponent<PlayerController>();
         float activeHearingRange = (pc != null && pc.IsRunning()) ? hearingRange : hearingRange * 0.4f;
 
@@ -172,8 +166,6 @@ public class EnemyAI : MonoBehaviour
             ChangeState(EnemyState.Investigating);
         }
     }
-
-    // ── Sanity Drain ───────────────────────────────────────────────────
 
     void DrainPlayerSanityByProximity()
     {
