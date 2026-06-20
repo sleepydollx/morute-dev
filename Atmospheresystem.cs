@@ -71,10 +71,8 @@ public class AtmosphereSystem : MonoBehaviour
     {
         if (sunLight == null) return;
 
-        // Rotate sun across the sky
         sunLight.transform.rotation = Quaternion.Euler(timeOfDay * 360f - 90f, 170f, 0f);
 
-        // Dim at night
         float brightness = Mathf.Clamp01(Mathf.Sin(timeOfDay * Mathf.PI));
         sunLight.intensity = Mathf.Lerp(0.05f, 1.2f, brightness);
         if (RenderSettings.skybox != null && skyColorOverDay != null)
@@ -91,7 +89,6 @@ public class AtmosphereSystem : MonoBehaviour
             AudioClip clip = thunderClips[Random.Range(0, thunderClips.Length)];
             if (rainAudioSource != null) rainAudioSource.PlayOneShot(clip, 0.8f);
 
-            // Flash lightning
             StartCoroutine(LightningFlash());
             thunderTimer = thunderInterval + Random.Range(-5f, 10f);
         }
