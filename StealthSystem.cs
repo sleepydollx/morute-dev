@@ -60,8 +60,6 @@ public class StealthSystem : MonoBehaviour
 
     bool IsInLight()
     {
-        // Sample ambient light at player position
-        // Simple approach: check RenderSettings ambient + nearby lights
         float ambientBrightness = RenderSettings.ambientLight.grayscale;
         if (ambientBrightness > 0.3f) return true;
 
