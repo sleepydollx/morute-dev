@@ -10,10 +10,10 @@ public class StealthSystem : MonoBehaviour
     [Header("Modifiers")]
     public float runningVisibilityBonus  = 0.5f;  
     public float crouchVisibilityReduction = 0.4f;
-    public float lightVisibilityBonus    = 0.3f;  // Added when in a lit area
+    public float lightVisibilityBonus    = 0.3f;
 
     [Header("Detection")]
-    public float detectionThreshold = 0.85f;  // Above this, enemy instantly spots you
+    public float detectionThreshold = 0.85f;
     public LayerMask lightLayer;
 
     [Header("UI")]
@@ -39,9 +39,7 @@ public class StealthSystem : MonoBehaviour
 
     void CalculateVisibility()
     {
-        targetVisibility = 0f;
-
-        // Movement
+        targetVisibility = 0
         float h = Mathf.Abs(Input.GetAxis("Horizontal"));
         float v = Mathf.Abs(Input.GetAxis("Vertical"));
         bool moving = h > 0.1f || v > 0.1f;
@@ -50,7 +48,6 @@ public class StealthSystem : MonoBehaviour
         if (playerController != null && playerController.IsRunning())  targetVisibility += runningVisibilityBonus;
         if (playerController != null && playerController.IsCrouching()) targetVisibility -= crouchVisibilityReduction;
 
-        // Light check
         isInLight = IsInLight();
         if (isInLight) targetVisibility += lightVisibilityBonus;
 
