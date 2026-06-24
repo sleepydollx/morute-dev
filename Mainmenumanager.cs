@@ -3,23 +3,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-// ============================================================
-//  MAIN MENU MANAGER
-//  Attach this to a MainMenuManager GameObject in your scene.
-//
-//  SETUP:
-//  1. Create a Canvas with these panels:
-//     - MainPanel     (Play, Continue, Settings, Quit buttons)
-//     - SettingsPanel (volume, sensitivity sliders)
-//     - CreditsPanel  (your studio name, game title)
-//  2. Drag each panel + button into the Inspector fields below
-//  3. Set your game scene name in "gameSceneName"
-// ============================================================
-
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Scene")]
-    public string gameSceneName = "Chapter1";   // ← CHANGE to your first game scene
+    public string gameSceneName = "Before I Close My Eyes";
 
     [Header("Panels")]
     public GameObject mainPanel;
