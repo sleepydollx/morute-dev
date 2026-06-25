@@ -36,7 +36,6 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        // Auto-use medkits to restore sanity
         if (item.type == ItemType.MedKit)
         {
             SanitySystem sanity = GetComponent<SanitySystem>();
