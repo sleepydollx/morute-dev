@@ -179,7 +179,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // ── Utilities ──────────────────────────────────────────────────────
 
     void ChangeState(EnemyState newState)
     {
