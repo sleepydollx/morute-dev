@@ -18,7 +18,7 @@ public class CompanionAI : MonoBehaviour
     public float separationDistance = 20f; 
 
     [Header("Reaction")]
-    public float dangerAwarenessRadius = 10f;  // sees enemies within this range
+    public float dangerAwarenessRadius = 10f;
     public float scaredDuration = 5f;
 
     [Header("Dialogue")]
@@ -85,7 +85,6 @@ public class CompanionAI : MonoBehaviour
         }
     }
 
-    // ── State Handlers ────────────────────────────────────────────────────────
 
     void HandleFollow(float dist)
     {
@@ -105,7 +104,6 @@ public class CompanionAI : MonoBehaviour
 
     void HandleHide()
     {
-        // Find a nearby hiding spot (any object tagged "HidingSpot")
         GameObject[] spots = GameObject.FindGameObjectsWithTag("HidingSpot");
         if (spots.Length > 0)
         {
@@ -149,8 +147,6 @@ public class CompanionAI : MonoBehaviour
         }
     }
 
-    // ── Checks ────────────────────────────────────────────────────────────────
-
     void CheckForDanger()
     {
         if (currentState == CompanionState.Scared || currentState == CompanionState.Hiding) return;
@@ -191,8 +187,6 @@ public class CompanionAI : MonoBehaviour
             Speak(pool[Random.Range(0, pool.Length)]);
         }
     }
-
-    // ── Speech ────────────────────────────────────────────────────────────────
 
     public void Speak(string line, float duration = 4f)
     {
